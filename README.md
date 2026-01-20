@@ -1,5 +1,6 @@
 
 
+
 # 3ssmartship
 
 ## 🚀 Live Demo
@@ -29,5 +30,15 @@ The main components are located in the `src/` directory:
   - **Sidebar.tsx**: Sidebar navigation or controls.
   - **Render.tsx**: Tree structure visualization.
   - **TreeNode.tsx**: Individual node in the tree.
-  - **Node.data.ts**: Data definitions for nodes.
-  - **sidebar.data.ts**: Data for sidebar items.
+   - **Node.data.ts**: Contains the TypeScript interface and sample data structure for hierarchical nodes used in the board and tree components.
+   - **sidebar.data.ts**: Defines the structure and content of the sidebar menu, including all parent and child navigation items and their metadata (labels, icons, etc).
+
+
+## Key Assumptions and Trade-offs
+
+- The project uses Vite for fast development and build times.
+- TypeScript is used throughout for type safety and maintainability.
+- Sidebar items and node data are statically defined in data files for simplicity; dynamic fetching or backend integration is not implemented.
+- The component structure assumes a board/tree-based UI for managing hierarchical data.
+- Lucide icons are used for sidebar navigation for a modern, consistent look.
+- Some UI/UX and data structures are simplified for demonstration and may need further refinement for production use.
