@@ -1,9 +1,9 @@
 import { useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { Minimize, Search, X } from 'lucide-react';
-import "./board.css";
-import { treeData } from "./components/Node.data";
-import type { TreeNode } from "./components/Node.data";
+import "../board.css";
+import { treeData } from "./Node.data";
+import type { TreeNode } from "./Node.data";
 
 interface BoardProps {
   children: ReactNode | ((props: { locatedNodeId: string | null }) => ReactNode);

@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import Board from "../Board";
+import Board from "./Board";
 
 import TreeNode from "./TreeNode";
 import { treeData, type TreeNode as Node } from "./Node.data";

@@ -2,6 +2,12 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import { sidebarItems } from "./components/sidebar.data";
+import { useState } from "react";
+import Sidebar from "./components/Sidebar";
+import { Treee } from "./components/Treee";
+
+
+
 function buildSidebarBreadcrumbs(
   activeId: string | null,
   items: any[]
@@ -26,9 +32,7 @@ function buildSidebarBreadcrumbs(
 
   return [];
 }
-import { useState } from "react";
-import Sidebar from "./components/Sidebar";
-import { Treee } from "./components/Treee";
+
 
 function App() {
   const [activeSidebar, setActiveSidebar] = useState<string | null>(null);
@@ -46,8 +50,14 @@ function App() {
           <Breadcrumbs aria-label="breadcrumb">
             <Link
               underline="hover"
-              color="inherit"
               href="#"
+              sx={{
+                color: activeSidebar === null ? "#2563eb" : "#475569",
+                fontWeight: activeSidebar === null ? 600 : 500,
+                "&:hover": {
+                  color: "#2563eb"
+                }
+              }}
               onClick={e => {
                 e.preventDefault();
                 setActiveSidebar(null);
@@ -59,15 +69,27 @@ function App() {
             {buildSidebarBreadcrumbs(activeSidebar, sidebarItems).map(
               (crumb, index, arr) =>
                 index === arr.length - 1 ? (
-                  <Typography key={crumb.id} color="text.primary">
+                  <Typography
+                    key={crumb.id}
+                    sx={{
+                      color: "#2563eb", // blue-600
+                      fontWeight: 600
+                    }}
+                  >
                     {crumb.label}
                   </Typography>
                 ) : (
                   <Link
                     key={crumb.id}
                     underline="hover"
-                    color="inherit"
                     href="#"
+                    sx={{
+                      color: "#475569", // slate-600
+                      fontWeight: 500,
+                      "&:hover": {
+                        color: "#2563eb"
+                      }
+                    }}
                     onClick={e => {
                       e.preventDefault();
                       setActiveSidebar(crumb.id);

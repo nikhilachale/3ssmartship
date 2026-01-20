@@ -1,6 +1,7 @@
-import { useState } from "react";
+import  { useState } from "react";
+import type { JSX } from "react";
 import { sidebarItems } from "./sidebar.data";
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Grid, Calendar, Box, Clock, CardSim, Book, Users, List, Ship, Settings, CalendarDays } from 'lucide-react';
 
 type SidebarProps = {
   onSelect?: (id: string) => void;
@@ -21,9 +22,27 @@ export default function Sidebar({ onSelect, activeId }: SidebarProps) {
       </div>
 
       {sidebarItems.map(item => {
-        const isOpen = openId === item.id;
         const hasChildren = !!item.children?.length;
-        const isActive = activeId === item.id;
+        const isChildActive = item.children?.some(
+          child => child.id === activeId
+        );
+        const isActive = activeId === item.id || isChildActive;
+        const isOpen = openId === item.id || isChildActive;
+console.log(item.icon);
+        // Map icon string to Lucide icon component
+        const iconMap: Record<string, JSX.Element> = {
+          grid: <Grid className="w-5 h-5 mr-2" />,
+          calendar: <Calendar className="w-5 h-5 mr-2" />,
+          'calendar-days': <CalendarDays className="w-5 h-5 mr-2" />,
+          box: <Box className="w-5 h-5 mr-2" />,
+          clock: <Clock className="w-5 h-5 mr-2" />,
+          oil: <CardSim className="w-5 h-5 mr-2" />,
+          book: <Book className="w-5 h-5 mr-2" />,
+          users: <Users className="w-5 h-5 mr-2" />,
+          list: <List className="w-5 h-5 mr-2" />,
+          ship: <Ship className="w-5 h-5 mr-2" />,
+          settings: <Settings className="w-5 h-5 mr-2" />,
+        };
 
         return (
           <div key={item.id} className="">
@@ -35,9 +54,15 @@ export default function Sidebar({ onSelect, activeId }: SidebarProps) {
                   onSelect?.(item.id);
                 }
               }}
-              className={`w-full flex justify-between text-gray-600 items-center px-3 py-2 hover:bg-slate-100 ${isActive ? "text-blue-600 font-bold" : ""}`}
+              className={`w-full flex justify-between items-center px-3 py-2 hover:bg-slate-100
+  ${isActive ? "text-blue-600 font-bold" : "text-gray-600"}
+`}
             >
-              <span className="font-medium">{item.label}</span>
+              <span className="flex items-center font-medium">
+                
+                {iconMap[item.icon]}
+                {item.label}
+              </span>
               {hasChildren && <ChevronDown className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />}
             </button>
 
@@ -46,7 +71,11 @@ export default function Sidebar({ onSelect, activeId }: SidebarProps) {
                 {item.children!.map(child => (
                   <div
                     key={child.id}
-                    className={`text-sm px-2 py-1 rounded cursor-pointer hover:bg-slate-100 ${activeId === child.id ? "bg-slate-200 font-bold" : ""}`}
+                    className={`text-sm px-2 py-1 rounded cursor-pointer hover:bg-slate-100
+  ${activeId === child.id
+    ? "text-blue-600 font-bold bg-slate-100"
+    : "text-gray-600"}
+`}
                     onClick={() => onSelect?.(child.id)}
                   >
                     {child.label}
