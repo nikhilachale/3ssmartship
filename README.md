@@ -1,5 +1,10 @@
 
+
 # 3ssmartship
+
+## 🚀 Live Demo
+
+[https://3ssmartship-one.vercel.app/](https://3ssmartship-one.vercel.app/)
 
 ## How to Run the Project
 
@@ -18,21 +23,11 @@
 The main components are located in the `src/` directory:
 
 - **App.tsx**: Root component that sets up the main layout and routing.
-- **Board.tsx**: Main board UI, likely for displaying nodes or tasks.
-- **HierarchyBoard.tsx**: Handles hierarchical board views.
-- **NodeColumn.tsx**: Represents columns of nodes in the board.
 - **components/**
+  - **Board.tsx**: Main board UI, likely for displaying nodes or tasks.
   - **HierarchyBreadcrumbs.tsx**: Breadcrumb navigation for hierarchy.
   - **Sidebar.tsx**: Sidebar navigation or controls.
-  - **Treee.tsx**: Tree structure visualization.
+  - **Render.tsx**: Tree structure visualization.
   - **TreeNode.tsx**: Individual node in the tree.
   - **Node.data.ts**: Data definitions for nodes.
   - **sidebar.data.ts**: Data for sidebar items.
-
-## Trade-offs or Assumptions
-
-- The project uses Vite for fast development and build times.
-- TypeScript is used for type safety and maintainability.
-- The component structure assumes a board/tree-based UI for managing hierarchical data.
-- Some files (e.g., `Treee.tsx`) may be typos or experimental; review and rename as needed.
-- Unused template files and comments have been removed for clarity.

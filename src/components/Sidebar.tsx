@@ -55,7 +55,7 @@ console.log(item.icon);
                 }
               }}
               className={`w-full flex justify-between items-center px-3 py-2 hover:bg-slate-100
-  ${isActive ? "text-blue-600 font-bold" : "text-gray-600"}
+  ${isActive ? "text-blue-600 font-bold" : "text-gray-500"}
 `}
             >
               <span className="flex items-center font-medium">
@@ -74,7 +74,7 @@ console.log(item.icon);
                     className={`text-sm px-2 py-1 rounded cursor-pointer hover:bg-slate-100
   ${activeId === child.id
     ? "text-blue-600 font-bold bg-slate-100"
-    : "text-gray-600"}
+    : "text-gray-500"}
 `}
                     onClick={() => onSelect?.(child.id)}
                   >

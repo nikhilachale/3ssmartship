@@ -4,7 +4,7 @@ import Link from "@mui/material/Link";
 import { sidebarItems } from "./components/sidebar.data";
 import { useState } from "react";
 import Sidebar from "./components/Sidebar";
-import { Treee } from "./components/Treee";
+import { Treee } from "./components/Render";
 
 
 
